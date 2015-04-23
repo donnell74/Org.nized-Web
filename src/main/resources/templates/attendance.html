@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="img/favicon.ico"/>
+
+    <title>Static Top Navbar Example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <!-- Custom styles for this site -->
+    <link href="css/navbar-static-top.css" rel="stylesheet"/>
+    <link href="css/custom-styles.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home">Org.nized</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="home">Home</a></li>
+                <li class="active"><a href="attendance">Attendance</a></li>
+                <li><a href="notes">Notes</a></li>
+                <li><a href="surveys">Surveys</a></li>
+                <li><a href="profile">My Profile</a></li>
+                <li><a href="announcements">Announcements</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports
+                        (Officer Only) <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="people">People</a></li>
+                        <li><a href="classbonus">Class Bonus</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Advisor/Admin Only</li>
+                        <li><a href="admin">Admin Page</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login">Login</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container">
+
+    <h1>Attendance</h1>
+
+    <form role="form" class="form-inline">
+        <div class="form-group pull-right">
+            <select>
+                <option selected="">Pick a date</option>
+                <option>Some Date</option>
+                <option>Another One</option>
+            </select>
+        </div>
+    </form>
+
+    <!-- Announcements Container -->
+    <div class="container">
+        <h2>2014-12-14</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">The Numbers</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td>Total Attendance</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>Guests</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Members</td>
+                                <td>24</td>
+                            </tr>
+                            <tr>
+                                <td>CIS 326 Class Bonus&nbsp;</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>No Bonus</td>
+                                <td>6</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Column -->
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Look at my pie!</h3>
+                    </div>
+                    <div class="panel-body">
+                        <img src="img/ringchart-example.png" height="250px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Announcements Container -->
+
+</div>
+<!-- /Main Container -->
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Dev Feedback and stuff.</p>
+    </div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
