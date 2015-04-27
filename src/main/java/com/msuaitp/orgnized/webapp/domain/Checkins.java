@@ -1,15 +1,15 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.util.Date;
 
 @JsonSerialize
 @JsonDeserialize
 public class Checkins {
 	private int id;
-	private String email; // Based on person stored in DB
+	private Person email; // Based on person stored in DB
 	private Date date_scanned;
 	private Date createdAt;
 	private Date updatedAt;
@@ -22,11 +22,11 @@ public class Checkins {
 		this.id = id;
 	}
 
-	public String getEmail() {
+	public Person getEmail () {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail (Person email) {
 		this.email = email;
 	}
 
@@ -80,12 +80,9 @@ public class Checkins {
 				: checkins.email != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(checkins.updatedAt)
-				: checkins.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(checkins.updatedAt)
+				: checkins.updatedAt != null);
 
-		return true;
 	}
 
 	@Override

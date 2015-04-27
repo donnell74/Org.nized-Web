@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -68,9 +68,9 @@
 
     <form role="form" class="form-inline">
         <div class="form-group pull-right">
-            <select>
-                <option selected="">Pick a date</option>
-                <option>Some Date</option>
+            <select id="date-dropdown">
+                <option selected="selected">Pick a date</option>
+                <option>2015-4-14</option>
                 <option>Another One</option>
             </select>
         </div>
@@ -111,6 +111,13 @@
                         </table>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">People Here Today</h3>
+                    </div>
+                    <div class="panel-body" id="attendee-list">
+                    </div>
+                </div>
             </div>
 
             <!-- Pie Column -->
@@ -146,5 +153,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
+<script src="js/attendance.js"></script>
 </body>
 </html>
