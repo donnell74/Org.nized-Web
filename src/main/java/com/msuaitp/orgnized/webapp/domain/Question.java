@@ -1,13 +1,15 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Date;
+import java.util.List;
+
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Question {
 
 	/*
@@ -17,9 +19,9 @@ public class Question {
 	private int id;
 	private int survey_id; // From survey_id in DB
 	private String question_text;
+	private typeEnum type;
 	private List<PossibleAnswer> possible_answers;
 	private List<Role> roles;
-	private typeEnum type;
 	private Date createdAt;
 	private Date updatedAt;
 
@@ -145,12 +147,9 @@ public class Question {
 		if (type != question.type) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(question.updatedAt)
-				: question.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(question.updatedAt)
+				: question.updatedAt != null);
 
-		return true;
 	}
 
 	@Override

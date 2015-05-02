@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ryan on 4/25/2015.
@@ -22,9 +23,18 @@ public class CheckinsController {
 
 	@RequestMapping("/checkins-by-date")
 	@ResponseBody
-	public List<Checkins> get (
+	public List<Checkins> getCheckinsByDate (
 			@RequestParam(value = "date", required = true) String date, Model model) {
 		List<Checkins> checkins = Arrays.asList(checkinDao.getCheckinsByDate(date));
+
+		return checkins;
+	}
+
+	@RequestMapping("/attend-by-date")
+	@ResponseBody
+	public Map<String, Integer> getAttendByDate (
+			@RequestParam(value = "date", required = true) String date, Model model) {
+		Map<String, Integer> checkins = checkinDao.getAttendByDate(date);
 
 		return checkins;
 	}

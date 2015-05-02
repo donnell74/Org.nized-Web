@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Org.Nized for MSU AITP</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <!-- Custom styles for this site -->
+    <link href="/css/navbar-static-top.css" rel="stylesheet"/>
+    <link href="/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home">Org.nized</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li class="active"><a href="/notes">Notes</a></li>
+                <li><a href="/surveys">Surveys</a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/announcements">Announcements</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports
+                        (Officer Only) <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/people">People</a></li>
+                        <li><a href="/classbonus">Class Bonus</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Advisor/Admin Only</li>
+                        <li><a href="/admin">Admin Page</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login">Login</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<!-- Main Container -->
+<div class="container">
+    <h1>Surveys</h1>
+    <!-- Announcements Container -->
+    <div class="container">
+        <h2>Create New Note</h2>
+
+        <p>Please note that your changes will not be committed until you click Save!</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">The Relevant Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="edit-note" method="post" id="edit-note-form" th:object="${note}">
+                            <input type="hidden" th:field="*{id}"/>
+
+                            <div>
+                                <label for="email"
+                                       th:class="${#fields.hasErrors('person_email.email')}? fieldError">Email of
+                                    Person:
+                                </label>
+                                <input type="text" th:field="*{person_email.email}"
+                                       th:class="${#fields.hasErrors('person_email.email')}? fieldError"/>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('person_email.email')}" th:text="${err}"
+                                        class="fieldError"></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <label for="public_to_person"
+                                       th:class="${#fields.hasErrors('public_to_person')}? fieldError">Public to
+                                    Person? :
+                                </label>
+                                <input type="checkbox" th:field="*{public_to_person}"
+                                       th:class="${#fields.hasErrors('public_to_person')}? fieldError"/>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('public_to_person')}" th:text="${err}"
+                                        class="fieldError"></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <label for="title" th:class="${#fields.hasErrors('title')}? fieldError">Title:
+                                    <input type="text" th:field="*{title}"
+                                           th:class="${#fields.hasErrors('title')}? fieldError"/>
+                                </label>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('title')}" th:text="${err}" class="fieldError"/>
+                                </ul>
+                            </div>
+                            <div>
+                                <label for="text" th:class="${#fields.hasErrors('text')}? fieldError">Text of Note:
+                                    <input type="text" th:field="*{text}"
+                                           th:class="${#fields.hasErrors('text')}? fieldError"/>
+                                </label>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('text')}" th:text="${err}" class="fieldError"/>
+                                </ul>
+                            </div>
+
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Dev Feedback and stuff.</p>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="/js/surveys.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("includedHeader").load("header");
+    })
+</script>
+</body>
+</html>

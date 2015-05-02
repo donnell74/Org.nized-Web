@@ -1,17 +1,22 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.msuaitp.orgnized.webapp.dao.PersonDao;
+
+import java.util.Date;
 
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Note {
 
 	/*
 	 * id person_email public_to_person title text
 	 */
+
+	PersonDao personDao = new PersonDao();
 
 	private int id;
 	private Person person_email; // from person_email in DB
@@ -34,6 +39,7 @@ public class Note {
 	}
 
 	public void setPerson_email(Person person_email) {
+
 		this.person_email = person_email;
 	}
 

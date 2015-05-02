@@ -1,14 +1,15 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-
-import org.springframework.security.core.GrantedAuthority;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Date;
 
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Role implements GrantedAuthority {
 
 	/*

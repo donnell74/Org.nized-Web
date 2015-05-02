@@ -1,17 +1,18 @@
 package com.msuaitp.orgnized.webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person implements UserDetails {
 	private static final long serialVersionUID = 2744190502477312547L;
 
@@ -23,16 +24,49 @@ public class Person implements UserDetails {
 	private String mobile_number;
 	private localPaidEnum is_local_paid;
 	private boolean is_member;
+	private String major;
 	private classYearEnum class_year;
 	private Date last_sync_date;
 	private List<Checkins> checkins;
 	private List<ClassBonus> class_bonuses;
 	private List<Role> roles;
-	private List<String> _roles;
-	private List<ClassBonus> _class_bonuses;
-	private List<Date> _checkins;
 	private Date createdAt;
 	private Date updatedAt;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities () {
+		return null;
+	}
+
+	@Override
+	public String getPassword () {
+		return null;
+	}
+
+	@Override
+	public String getUsername () {
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired () {
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked () {
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired () {
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled () {
+		return false;
+	}
 
 	public enum classYearEnum {
 		FRESHMAN, SOPHOMORE, JUNIOR, SENIOR
@@ -48,11 +82,6 @@ public class Person implements UserDetails {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
 	}
 
 	public void setPassword(String password) {
@@ -107,6 +136,17 @@ public class Person implements UserDetails {
 		this.is_member = is_member;
 	}
 
+
+	public String getMajor () {
+		return major;
+	}
+
+	public void setMajor (String major) {
+		this.major = major;
+	}
+
+
+
 	public classYearEnum getClass_year() {
 		return class_year;
 	}
@@ -147,30 +187,6 @@ public class Person implements UserDetails {
 		this.roles = roles;
 	}
 
-	public List<String> get_roles() {
-		return _roles;
-	}
-
-	public void set_roles(List<String> _roles) {
-		this._roles = _roles;
-	}
-
-	public List<ClassBonus> get_class_bonuses() {
-		return _class_bonuses;
-	}
-
-	public void set_class_bonuses(List<ClassBonus> _class_bonuses) {
-		this._class_bonuses = _class_bonuses;
-	}
-
-	public List<Date> get_checkins() {
-		return _checkins;
-	}
-
-	public void set_checkins(List<Date> _checkins) {
-		this._checkins = _checkins;
-	}
-
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -199,16 +215,6 @@ public class Person implements UserDetails {
 		Person person = (Person) o;
 
 		if (is_member != person.is_member) {
-			return false;
-		}
-		if (_checkins != null ? !_checkins.equals(person._checkins) : person._checkins != null) {
-			return false;
-		}
-		if (_class_bonuses != null ? !_class_bonuses.equals(person._class_bonuses)
-				: person._class_bonuses != null) {
-			return false;
-		}
-		if (_roles != null ? !_roles.equals(person._roles) : person._roles != null) {
 			return false;
 		}
 		if (checkins != null ? !checkins.equals(person.checkins) : person.checkins != null) {
@@ -254,11 +260,8 @@ public class Person implements UserDetails {
 		if (roles != null ? !roles.equals(person.roles) : person.roles != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(person.updatedAt) : person.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(person.updatedAt) : person.updatedAt != null);
 
-		return true;
 	}
 
 	@Override
@@ -276,9 +279,6 @@ public class Person implements UserDetails {
 		result = 31 * result + (checkins != null ? checkins.hashCode() : 0);
 		result = 31 * result + (class_bonuses != null ? class_bonuses.hashCode() : 0);
 		result = 31 * result + (roles != null ? roles.hashCode() : 0);
-		result = 31 * result + (_roles != null ? _roles.hashCode() : 0);
-		result = 31 * result + (_class_bonuses != null ? _class_bonuses.hashCode() : 0);
-		result = 31 * result + (_checkins != null ? _checkins.hashCode() : 0);
 		result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
 		result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
 		return result;
@@ -291,42 +291,8 @@ public class Person implements UserDetails {
 				+ ", expire_date=" + expire_date + ", mobile_number='" + mobile_number + '\''
 				+ ", is_local_paid=" + is_local_paid + ", is_member=" + is_member + ", class_year="
 				+ class_year + ", last_sync_date=" + last_sync_date + ", checkins=" + checkins
-				+ ", class_bonuses=" + class_bonuses + ", roles=" + roles + ", _roles=" + _roles
-				+ ", _class_bonuses=" + _class_bonuses + ", _checkins=" + _checkins
+				+ ", class_bonuses=" + class_bonuses + ", roles=" + roles
 				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return roles;
-	}
-
-	@Override
-	public String getUsername() {
-		return email;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 }

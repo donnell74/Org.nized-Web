@@ -1,7 +1,9 @@
 package com.msuaitp.orgnized.webapp.controller;
 
 import com.msuaitp.orgnized.webapp.dao.CheckinDao;
+import com.msuaitp.orgnized.webapp.dao.NotesDao;
 import com.msuaitp.orgnized.webapp.domain.Checkins;
+import com.msuaitp.orgnized.webapp.domain.Note;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import java.util.List;
 public class GeneralController {
 
 	CheckinDao checkinDao = new CheckinDao();
+	NotesDao notesDao = new NotesDao();
 
 	@RequestMapping("/home")
 	public String home() {
@@ -41,7 +44,9 @@ public class GeneralController {
 	}
 
 	@RequestMapping("/notes")
-	public String notes() {
+	public String notes (Model model) {
+		List<Note> theNotes = Arrays.asList(notesDao.getAllNotes());
+		model.addAttribute("theNotes", theNotes);
 
 		return "notes";
 	}

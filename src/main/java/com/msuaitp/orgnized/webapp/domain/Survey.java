@@ -1,13 +1,16 @@
 package com.msuaitp.orgnized.webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Survey {
 
 	/*
@@ -16,7 +19,9 @@ public class Survey {
 	private int id;
 	private String creator;
 	private String name;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date start_date;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date end_date;
 	private List<Question> questions;
 	private List<Role> roles;
@@ -47,7 +52,7 @@ public class Survey {
 		this.name = name;
 	}
 
-	public Date getStart_date() {
+	public Date getStart_date () {
 		return start_date;
 	}
 

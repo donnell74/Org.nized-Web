@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" xmlns:th="http://www.w3.org/1999/xhtml"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
@@ -79,7 +79,7 @@
 <!-- Main Container -->
 <div class="container">
     <h1>Notes</h1>
-    <span class="pull-right"><button class="btn btn-success" id="createBtn">Create</button></span>
+    <span class="pull-right"><a class="btn btn-success" id="createBtn" href="notes/create">Create</a></span>
 
     <div class="container" style="width: 70%">
         <table id="notesTable">
@@ -87,18 +87,19 @@
             <tr>
                 <th>Title</th>
                 <th>Person</th>
-                <th>Created Date</th>
-                <th>Modified Date</th>
+                <th>Public to Person?</th>
+                <th>The Note</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Don't Talk Religion</td>
-                <td>Laura Reno</td>
-                <td>2014-10-02</td>
-                <td>2014-10-02</td>
-                <td></td>
+            <tr th:each="note : ${theNotes}">
+                <td th:text="${note.title}"></td>
+                <td th:text="${note.person_email.first_name} + ' ' + ${note.person_email.last_name}"></td>
+                <td th:text="${note.public_to_person}"></td>
+                <td th:text="${note.text}"></td>
+                <td><a th:href="@{notes/edit (id=${note.id})}" class="btn btn-warning">Edit</a> <a
+                        th:href="@{notes/delete (id=${note.id})}" class="btn btn-danger">Delete</a></td>
             </tr>
             </tbody>
         </table>

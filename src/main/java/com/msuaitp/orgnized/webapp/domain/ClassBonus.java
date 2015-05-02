@@ -1,15 +1,17 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Date;
+
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClassBonus {
-	private String email;
-	private int class_bonus_id;
+	private String email; // gone?
+	private int class_bonus_id; //id
 	private String course_code;
 	private String semester;
 	private Date createdAt;

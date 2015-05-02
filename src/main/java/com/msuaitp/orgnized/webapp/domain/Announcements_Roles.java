@@ -1,13 +1,15 @@
 package com.msuaitp.orgnized.webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by greg on 1/7/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Announcements_Roles {
 	private Announcement announcement_id;
 	@JsonIgnore
@@ -70,12 +72,9 @@ public class Announcements_Roles {
 				: that.role_id != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(that.updatedAt)
-				: that.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(that.updatedAt)
+				: that.updatedAt != null);
 
-		return true;
 	}
 
 	@Override

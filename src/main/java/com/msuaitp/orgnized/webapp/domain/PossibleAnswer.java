@@ -1,12 +1,14 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Date;
+
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PossibleAnswer {
 
 	/*
@@ -83,12 +85,9 @@ public class PossibleAnswer {
 		if (text != null ? !text.equals(that.text) : that.text != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(that.updatedAt)
-				: that.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(that.updatedAt)
+				: that.updatedAt != null);
 
-		return true;
 	}
 
 	@Override

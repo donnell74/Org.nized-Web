@@ -1,17 +1,19 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import java.util.Date;
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Date;
+import java.util.List;
+
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Announcement {
 
 	private int id;
-	private String email;
+	//private String email;
 	private String creator; // email of person who created it is what's passed
 	private String title;
 	private String text;
@@ -29,13 +31,13 @@ public class Announcement {
 		this.id = id;
 	}
 
-	public String getEmail() {
+	/*public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
+	}*/
 
 	public String getCreator() {
 		return creator;
@@ -123,9 +125,9 @@ public class Announcement {
 				: that.creator != null) {
 			return false;
 		}
-		if (email != null ? !email.equals(that.email) : that.email != null) {
+		/*if (email != null ? !email.equals(that.email) : that.email != null) {
 			return false;
-		}
+		}*/
 		if (end_date != null ? !end_date.equals(that.end_date)
 				: that.end_date != null) {
 			return false;
@@ -143,18 +145,15 @@ public class Announcement {
 		if (title != null ? !title.equals(that.title) : that.title != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(that.updatedAt)
-				: that.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(that.updatedAt)
+				: that.updatedAt != null);
 
-		return true;
 	}
 
 	@Override
 	public int hashCode() {
 		int result = id;
-		result = 31 * result + (email != null ? email.hashCode() : 0);
+		//result = 31 * result + (email != null ? email.hashCode() : 0);
 		result = 31 * result + (creator != null ? creator.hashCode() : 0);
 		result = 31 * result + (title != null ? title.hashCode() : 0);
 		result = 31 * result + (text != null ? text.hashCode() : 0);
@@ -168,7 +167,8 @@ public class Announcement {
 
 	@Override
 	public String toString() {
-		return "Announcement{" + "id=" + id + ", email='" + email + '\''
+		return "Announcement{" + "id=" + id
+				//+ ", email='" + email + '\''
 				+ ", creator='" + creator + '\'' + ", title='" + title + '\''
 				+ ", text='" + text + '\'' + ", start_date=" + start_date
 				+ ", end_date=" + end_date + ", roles=" + roles

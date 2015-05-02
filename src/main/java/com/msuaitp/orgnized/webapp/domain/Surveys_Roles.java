@@ -1,10 +1,13 @@
 package com.msuaitp.orgnized.webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 /**
  * Created by greg on 1/7/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Surveys_Roles {
 	private Survey survey_id;
 	private Role role_id;
@@ -66,12 +69,9 @@ public class Surveys_Roles {
 				: that.survey_id != null) {
 			return false;
 		}
-		if (updatedAt != null ? !updatedAt.equals(that.updatedAt)
-				: that.updatedAt != null) {
-			return false;
-		}
+		return !(updatedAt != null ? !updatedAt.equals(that.updatedAt)
+				: that.updatedAt != null);
 
-		return true;
 	}
 
 	@Override
