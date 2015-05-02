@@ -1,0 +1,64 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.container {
+    width: auto;
+    padding: 0 15px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: rgb(94, 0, 9);
+}
+
+/*.alert-success > a {
+	color: #3C763D;
+}*/
+
+.navbar-default .navbar-nav > .active > a {
+    color: rgb(94, 0, 9);
+    font-weight: bold;
+}
+
+.dropdown-menu > li > a {
+    color: rgb(94, 0, 9);
+}
+
+.navbar-default .navbar-brand {
+    color: rgb(94, 0, 9);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #bbb;
+}
+
+.footer > div > .text-muted {
+    color: rgb(94, 0, 9);
+}
+
+.half-size {
+    width: 50%;
+}
+
+.the-numbers {
+    padding-left: 5px;
+}
+
+.fieldError {
+    color: rgb(94, 0, 9);
+}
