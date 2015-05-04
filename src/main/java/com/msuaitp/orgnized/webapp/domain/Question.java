@@ -49,14 +49,6 @@ public class Question {
 		this.question_text = questionText;
 	}
 
-	public List<PossibleAnswer> getPossibleAnswers() {
-		return possible_answers;
-	}
-
-	public void setPossibleAnswers(List<PossibleAnswer> possible_answers) {
-		this.possible_answers = possible_answers;
-	}
-
 	public List<Role> getRoles() {
 		return roles;
 	}

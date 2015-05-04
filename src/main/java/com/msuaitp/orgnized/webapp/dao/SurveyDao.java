@@ -1,6 +1,7 @@
 package com.msuaitp.orgnized.webapp.dao;
 
 import com.msuaitp.orgnized.webapp.domain.Survey;
+import com.msuaitp.orgnized.webapp.domain.SurveyUgh;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -42,7 +43,12 @@ public class SurveyDao {
 	}
 
 	public Survey getOneSurvey (String id) {
-		String url = "http://reorconsultants.com:1337/surveys/" + id;
+		String url = "http://reorconsultants.com:1337/surveys/find/" + id;
 		return restTemplate.getForObject(url, Survey.class);
+	}
+
+	public SurveyUgh getOneSurveyWithExtras (String id) {
+		String url = "http://reorconsultants.com:1337/surveys/findWithExtras/" + id;
+		return restTemplate.getForObject(url, SurveyUgh.class);
 	}
 }

@@ -76,16 +76,22 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Questions</h3>
+                        <h3 class="panel-title">Answers</h3>
                     </div>
                     <div class="panel-body">
                         <form action="/poss-answers/add-answers/" method="post">
-                            <div class="input_fields_wrap">
-                                <button class="btn btn-primary add_field_button">Add More Answers</button>
-                                <input type="submit" value="Submit" class="btn btn-success"/><br/>
-                                <input type="hidden" name="question_id" th:value="${question.id}"/>
-                                <input type="text" name="text[]" th:field="*{poss.text}"/>
-                            </div>
+                            <input type="hidden" name="question_id" th:value="${question.id}"/>
+                            <input type="text" th:field="${poss0.text}"/><br/>
+                            <input type="text" th:field="${poss1.text}"/><br/>
+                            <input type="text" th:field="${poss2.text}"/><br/>
+                            <input type="text" th:field="${poss3.text}"/><br/>
+                            <input type="text" th:field="${poss4.text}"/><br/>
+                            <input type="text" th:field="${poss5.text}"/><br/>
+                            <input type="text" th:field="${poss6.text}"/><br/>
+                            <input type="text" th:field="${poss7.text}"/><br/>
+                            <input type="text" th:field="${poss8.text}"/><br/>
+                            <input type="text" th:field="${poss9.text}"/><br/>
+                            <input type="submit" value="Submit" class="btn btn-success"/>
                         </form>
                     </div>
                 </div>
@@ -103,7 +109,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="/js/questions.js"></script>
 <script type="text/javascript">
     $(function () {
         $("includedHeader").load("header");

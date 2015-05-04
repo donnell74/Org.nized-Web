@@ -16,10 +16,12 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("surveys")
 public class SurveyController {
+	private final static Logger LOG = Logger.getLogger(SurveyController.class.getName());
 
 	SurveyDao surveyDao = new SurveyDao();
 	QuestionDao questionDao = new QuestionDao();
@@ -60,7 +62,8 @@ public class SurveyController {
 
 	@RequestMapping("edit")
 	public String editSurvey (Model model, String id) {
-		model.addAttribute("survey", surveyDao.getOneSurvey(id));
+		Survey survey = surveyDao.getOneSurvey(id);
+		model.addAttribute("survey", survey);
 		return "survey-add-questions";
 	}
 }
