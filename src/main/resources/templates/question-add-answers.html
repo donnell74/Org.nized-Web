@@ -55,7 +55,7 @@
     <h1>Surveys</h1>
     <!-- Announcements Container -->
     <div class="container">
-        <h2>Add Questions</h2>
+        <h2>Add Answers</h2>
 
         <p>Please note that your changes will not be committed until you click Save!</p>
 
@@ -66,13 +66,9 @@
                         <h3 class="panel-title">The Relevant Details</h3>
                     </div>
                     <div class="panel-body">
-                        <p>Name of Survey: <span th:text="${survey.name}"></span></p>
+                        <p>Question Text: <span th:text="${question.question_text}"></span></p>
 
-                        <p>Open to Non-Members?: <span th:text="${survey.openToNonMembers}"></span></p>
-
-                        <p>Start Date: <span th:text="${survey.start_date}"></span></p>
-
-                        <p>End Date: <span th:text="${survey.end_date}"></span></p>
+                        <p>Type of Answers: <span th:text="${question.type}"></span></p>
                     </div>
                 </div>
             </div>
@@ -83,21 +79,14 @@
                         <h3 class="panel-title">Questions</h3>
                     </div>
                     <div class="panel-body">
-                        <h1 th:text="${message}"></h1>
-                        <a th:href="@{/questions/new (surveyid=${survey.id})}">Add Question</a><br/>
-
-                        <div th:each="q : ${survey.questions}">
-                            <span th:text="${q.question_text}"></span>
-                            <a th:href="@{/poss-answers/new (questionId=${q.id}, questionType=${q.type})}">Add
-                                Answer</a><br/>
-                            <ul th:each="a: ${q.possible_answers}">
-                                <li th:text="a.text"></li>
-                            </ul>
-                            <!--                            Accessible by:
-                                                        <div th:each="r: ${q.roles}">
-                                                            <span th:text="${r.role_id}"></span><br />
-                                                        </div>-->
-                        </div>
+                        <form action="/poss-answers/add-answers/" method="post">
+                            <div class="input_fields_wrap">
+                                <button class="btn btn-primary add_field_button">Add More Answers</button>
+                                <input type="submit" value="Submit" class="btn btn-success"/><br/>
+                                <input type="hidden" name="question_id" th:value="${question.id}"/>
+                                <input type="text" name="text[]" th:field="*{poss.text}"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -114,7 +103,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="/js/surveys.js"></script>
+<script src="/js/questions.js"></script>
 <script type="text/javascript">
     $(function () {
         $("includedHeader").load("header");

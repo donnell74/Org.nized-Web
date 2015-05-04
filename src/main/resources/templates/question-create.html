@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head lang="en">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Org.Nized for MSU AITP</title>
+    <roles>Org.Nized for MSU AITP</roles>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
     <!-- Custom styles for this site -->
@@ -27,8 +27,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="/home">Home</a></li>
                 <li><a href="/attendance">Attendance</a></li>
-                <li><a href="/notes">Notes</a></li>
-                <li class="active"><a href="/surveys">Surveys</a></li>
+                <li class="active"><a href="/notes">Notes</a></li>
+                <li><a href="/surveys">Surveys</a></li>
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/announcements">Announcements</a></li>
                 <li class="dropdown">
@@ -55,49 +55,59 @@
     <h1>Surveys</h1>
     <!-- Announcements Container -->
     <div class="container">
-        <h2>Add Questions</h2>
+        <h2>Create New Question</h2>
 
         <p>Please note that your changes will not be committed until you click Save!</p>
 
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">The Relevant Details</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Name of Survey: <span th:text="${survey.name}"></span></p>
-
-                        <p>Open to Non-Members?: <span th:text="${survey.openToNonMembers}"></span></p>
-
-                        <p>Start Date: <span th:text="${survey.start_date}"></span></p>
-
-                        <p>End Date: <span th:text="${survey.end_date}"></span></p>
-                    </div>
-                </div>
             </div>
-
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Questions</h3>
+                        <h3 class="panel-roles">The Relevant Details</h3>
                     </div>
                     <div class="panel-body">
-                        <h1 th:text="${message}"></h1>
-                        <a th:href="@{/questions/new (surveyid=${survey.id})}">Add Question</a><br/>
+                        <form action="save" method="post" id="question-form" th:object="${question}">
+                            <input type="hidden" th:field="*{survey_id}"/>
 
-                        <div th:each="q : ${survey.questions}">
-                            <span th:text="${q.question_text}"></span>
-                            <a th:href="@{/poss-answers/new (questionId=${q.id}, questionType=${q.type})}">Add
-                                Answer</a><br/>
-                            <ul th:each="a: ${q.possible_answers}">
-                                <li th:text="a.text"></li>
-                            </ul>
-                            <!--                            Accessible by:
-                                                        <div th:each="r: ${q.roles}">
-                                                            <span th:text="${r.role_id}"></span><br />
-                                                        </div>-->
-                        </div>
+                            <div>
+                                <label for="question_text"
+                                       th:class="${#fields.hasErrors('question_text')}? fieldError">Question Text:
+                                </label>
+                                <input type="text" th:field="*{question_text}"
+                                       th:class="${#fields.hasErrors('question_text')}? fieldError"/>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('question_text')}" th:text="${err}"
+                                        class="fieldError"></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <label for="type"
+                                       th:class="${#fields.hasErrors('type')}? fieldError">Type of Response:
+                                </label>
+                                <!-- FIX THIS INPUT -->
+                                <select th:field="*{type}">
+                                    <option value="TEXT">Text</option>
+                                    <option value="CHECKBOX">Checkbox</option>
+                                    <option value="RADIO">Radio Buttons</option>
+                                </select>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('type')}" th:text="${err}"
+                                        class="fieldError"></li>
+                                </ul>
+                            </div>
+                            <!--<div>
+                                <label for="roles" th:class="${#fields.hasErrors('roles')}? fieldError">Visibility:
+                                    <input type="text" th:field="*{roles}"
+                                           th:class="${#fields.hasErrors('roles')}? fieldError"/>
+                                </label>
+                                <ul>
+                                    <li th:each="err : ${#fields.errors('roles')}" th:text="${err}" class="fieldError"/>
+                                </ul>
+                            </div>-->
+                            <input type="submit" value="Submit"/>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -114,7 +124,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="/js/surveys.js"></script>
 <script type="text/javascript">
     $(function () {
         $("includedHeader").load("header");

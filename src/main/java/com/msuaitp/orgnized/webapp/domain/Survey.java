@@ -25,6 +25,7 @@ public class Survey {
 	private Date end_date;
 	private List<Question> questions;
 	private List<Role> roles;
+	private boolean openToNonMembers;
 	private Date createdAt;
 	private Date updatedAt;
 
@@ -82,6 +83,14 @@ public class Survey {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public boolean isOpenToNonMembers () {
+		return openToNonMembers;
+	}
+
+	public void setOpenToNonMembers (boolean openToNonMembers) {
+		this.openToNonMembers = openToNonMembers;
 	}
 
 	public Date getCreatedAt() {
@@ -147,5 +156,4 @@ public class Survey {
 		return "Survey [id=" + id + ", creator=" + creator + ", name=" + name
 				+ "]";
 	}
-
 }

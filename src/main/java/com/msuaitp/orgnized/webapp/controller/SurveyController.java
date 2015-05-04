@@ -1,5 +1,6 @@
 package com.msuaitp.orgnized.webapp.controller;
 
+import com.msuaitp.orgnized.webapp.dao.QuestionDao;
 import com.msuaitp.orgnized.webapp.dao.SurveyDao;
 import com.msuaitp.orgnized.webapp.domain.Survey;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -16,15 +17,12 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by ryan_000 on 4/28/2015.
- */
-
 @Controller
 @RequestMapping("surveys")
 public class SurveyController {
 
 	SurveyDao surveyDao = new SurveyDao();
+	QuestionDao questionDao = new QuestionDao();
 
 	@InitBinder
 	public void initBinder (final WebDataBinder binder) {
@@ -42,11 +40,27 @@ public class SurveyController {
 	@RequestMapping("create-outline")
 	public String createSurveyOutline (Model model, @Valid @ModelAttribute Survey survey, BindingResult result, Principal
 			principal) {
+		if (survey.getEnd_date().before(survey.getStart_date())) {
+			result.rejectValue("end_date", "before");
+		}
 		if ((!result.hasErrors()) && (principal != null)) {
 			surveyDao.saveOutline(survey, principal);
 			model.addAttribute("survey", survey);
 			return "survey-add-questions";
 		}
 		return "survey-landing";
+	}
+
+	@RequestMapping("delete")
+	public String deleteSurvey (Model model, String id) {
+		surveyDao.deleteSurvey(id);
+		model.addAttribute("surveys", surveyDao.getAllSurveys());
+		return "redirect:/surveys";
+	}
+
+	@RequestMapping("edit")
+	public String editSurvey (Model model, String id) {
+		model.addAttribute("survey", surveyDao.getOneSurvey(id));
+		return "survey-add-questions";
 	}
 }

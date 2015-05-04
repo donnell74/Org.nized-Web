@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Org.Nized for MSU AITP</title>
+    <title>Org.Nized for MSU AITP - Error Page</title>
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
     <!-- Custom styles for this site -->
     <link href="/css/navbar-static-top.css" rel="stylesheet"/>
     <link href="/css/custom-styles.css" rel="stylesheet"/>
+
+
 </head>
 <body>
 <!-- Static navbar -->
@@ -25,10 +29,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a></li>
+                <li class="active"><a href="home">Home</a></li>
                 <li><a href="/attendance">Attendance</a></li>
                 <li><a href="/notes">Notes</a></li>
-                <li class="active"><a href="/surveys">Surveys</a></li>
+                <li><a href="/surveys">Surveys</a></li>
                 <li><a href="/profile">My Profile</a></li>
                 <li><a href="/announcements">Announcements</a></li>
                 <li class="dropdown">
@@ -50,71 +54,27 @@
         <!--/.nav-collapse -->
     </div>
 </nav>
-<!-- Main Container -->
-<div class="container">
-    <h1>Surveys</h1>
-    <!-- Announcements Container -->
-    <div class="container">
-        <h2>Add Questions</h2>
 
-        <p>Please note that your changes will not be committed until you click Save!</p>
+<body>
+<p>There was an error</p>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">The Relevant Details</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>Name of Survey: <span th:text="${survey.name}"></span></p>
+<h1 th:text="${errorCode}"></h1>
 
-                        <p>Open to Non-Members?: <span th:text="${survey.openToNonMembers}"></span></p>
+<p th:text="${errorMessage}"></p>
+</body>
 
-                        <p>Start Date: <span th:text="${survey.start_date}"></span></p>
-
-                        <p>End Date: <span th:text="${survey.end_date}"></span></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Questions</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h1 th:text="${message}"></h1>
-                        <a th:href="@{/questions/new (surveyid=${survey.id})}">Add Question</a><br/>
-
-                        <div th:each="q : ${survey.questions}">
-                            <span th:text="${q.question_text}"></span>
-                            <a th:href="@{/poss-answers/new (questionId=${q.id}, questionType=${q.type})}">Add
-                                Answer</a><br/>
-                            <ul th:each="a: ${q.possible_answers}">
-                                <li th:text="a.text"></li>
-                            </ul>
-                            <!--                            Accessible by:
-                                                        <div th:each="r: ${q.roles}">
-                                                            <span th:text="${r.role_id}"></span><br />
-                                                        </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <footer class="footer">
     <div class="container">
         <p class="text-muted">Dev Feedback and stuff.</p>
     </div>
 </footer>
+
+
 <!-- Bootstrap core JavaScript
-    ================================================== -->
+================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="/js/surveys.js"></script>
 <script type="text/javascript">
     $(function () {
         $("includedHeader").load("header");

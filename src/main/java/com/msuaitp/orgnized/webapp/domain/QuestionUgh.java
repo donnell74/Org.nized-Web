@@ -10,14 +10,14 @@ import java.util.List;
 @JsonSerialize
 @JsonDeserialize
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Question {
+public class QuestionUgh {
 
 	/*
 	 * id survey_id question_text type possible_answers roles
 	 */
 
 	private int id;
-	private int survey_id;
+	private Survey survey_id;
 	private String question_text;
 	private typeEnum type;
 	private List<PossibleAnswer> possible_answers;
@@ -25,19 +25,19 @@ public class Question {
 	private Date createdAt;
 	private Date updatedAt;
 
-	public int getId() {
+	public int getId () {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId (int id) {
 		this.id = id;
 	}
 
-	public int getSurvey_id() {
+	public Survey getSurvey_id () {
 		return survey_id;
 	}
 
-	public void setSurvey_id(int survey_id) {
+	public void setSurvey_id (Survey survey_id) {
 		this.survey_id = survey_id;
 	}
 
@@ -49,51 +49,51 @@ public class Question {
 		this.question_text = questionText;
 	}
 
-	public List<PossibleAnswer> getPossibleAnswers() {
+	public List<PossibleAnswer> getPossibleAnswers () {
 		return possible_answers;
 	}
 
-	public void setPossibleAnswers(List<PossibleAnswer> possible_answers) {
+	public void setPossibleAnswers (List<PossibleAnswer> possible_answers) {
 		this.possible_answers = possible_answers;
 	}
 
-	public List<Role> getRoles() {
+	public List<Role> getRoles () {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles (List<Role> roles) {
 		this.roles = roles;
 	}
 
-	public List<PossibleAnswer> getPossible_answers() {
+	public List<PossibleAnswer> getPossible_answers () {
 		return possible_answers;
 	}
 
-	public void setPossible_answers(List<PossibleAnswer> possible_answers) {
+	public void setPossible_answers (List<PossibleAnswer> possible_answers) {
 		this.possible_answers = possible_answers;
 	}
 
-	public typeEnum getType() {
+	public typeEnum getType () {
 		return type;
 	}
 
-	public void setType(typeEnum type) {
+	public void setType (typeEnum type) {
 		this.type = type;
 	}
 
-	public Date getCreatedAt() {
+	public Date getCreatedAt () {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt (Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public Date getUpdatedAt () {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt (Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
@@ -102,7 +102,7 @@ public class Question {
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals (Object o) {
 		if (this == o) {
 			return true;
 		}
@@ -110,7 +110,7 @@ public class Question {
 			return false;
 		}
 
-		Question question = (Question) o;
+		QuestionUgh question = (QuestionUgh) o;
 
 		if (id != question.id) {
 			return false;
@@ -145,7 +145,7 @@ public class Question {
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode () {
 		int result = id;
 		result = 31 * result
 				+ (question_text != null ? question_text.hashCode() : 0);
@@ -159,7 +159,7 @@ public class Question {
 	}
 
 	@Override
-	public String toString() {
+	public String toString () {
 		return "Question{" + "id=" + id + ", survey_id=" + survey_id
 				+ ", question_text='" + question_text + '\''
 				+ ", possible_answers=" + possible_answers + ", roles=" + roles
