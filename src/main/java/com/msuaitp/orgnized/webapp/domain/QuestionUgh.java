@@ -20,7 +20,7 @@ public class QuestionUgh {
 	private Survey survey_id;
 	private String question_text;
 	private typeEnum type;
-	private List<PossibleAnswer> possible_answers;
+	private List<PossibleAnswerUgh> possible_answers;
 	private List<Role> roles;
 	private Date createdAt;
 	private Date updatedAt;
@@ -49,14 +49,6 @@ public class QuestionUgh {
 		this.question_text = questionText;
 	}
 
-	public List<PossibleAnswer> getPossibleAnswers () {
-		return possible_answers;
-	}
-
-	public void setPossibleAnswers (List<PossibleAnswer> possible_answers) {
-		this.possible_answers = possible_answers;
-	}
-
 	public List<Role> getRoles () {
 		return roles;
 	}
@@ -65,11 +57,11 @@ public class QuestionUgh {
 		this.roles = roles;
 	}
 
-	public List<PossibleAnswer> getPossible_answers () {
+	public List<PossibleAnswerUgh> getPossible_answers () {
 		return possible_answers;
 	}
 
-	public void setPossible_answers (List<PossibleAnswer> possible_answers) {
+	public void setPossible_answers (List<PossibleAnswerUgh> possible_answers) {
 		this.possible_answers = possible_answers;
 	}
 

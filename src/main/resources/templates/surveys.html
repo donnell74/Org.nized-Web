@@ -97,7 +97,7 @@
                 <td th:text="${survey.name}"></td>
                 <td th:text="${survey.openToNonMembers}"></td>
                 <td th:text="${survey.end_date}"></td>
-                <td><a th:href="@{responses (surveyid=${survey.id})}" class="btn btn-success">View Stats</a>
+                <td><a th:href="@{answers/view (surveyid=${survey.id})}" class="btn btn-success">View Stats</a>
                     <a th:href="@{surveys/edit (id=${survey.id})}" class="btn btn-warning">Edit</a>
                     <a th:href="@{surveys/delete (id=${survey.id})}" class="btn btn-danger">Delete</a>
                 </td>

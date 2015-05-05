@@ -55,9 +55,7 @@
     <h1>Surveys</h1>
     <!-- Announcements Container -->
     <div class="container">
-        <h2>Add Questions</h2>
-
-        <p>Please note that your changes will not be committed until you click Save!</p>
+        <h2>View Responses</h2>
 
         <div class="row">
             <div class="col-md-6">
@@ -80,33 +78,16 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Questions</h3>
+                        <h3 class="panel-title">Responses</h3>
                     </div>
                     <div class="panel-body">
-                        <h1 th:text="${message}"></h1>
-                        <a th:href="@{/questions/new (surveyid=${survey.id})}" class="btn btn-success">Add
-                            Question</a><br/><br/>
 
                         <div th:each="q : ${survey.questions}">
                             <span th:text="${q.question_text}"></span>
-                            <a th:href="@{/poss-answers/new (questionId=${q.id}, questionType=${q.type})}"
-                               class="btn btn-mini btn-success">Add
-                                Answer</a>
-                            <a th:href="@{/questions/edit (question_id=${q.id})}" class="btn btn-warning">Edit
-                            </a>
-                            <a th:href="@{/questions/delete (question_id=${q.id})}" class="btn btn-danger">
-                                Delete</a>
                             <br/>
                             <ul th:each="a : ${q.possible_answers}">
                                 <li>
                                     <span th:text="*{a.text}"></span>
-                                    <a th:href="@{/poss-answers/edit (answer_id=${a.id}, question_id=${q.id})}"
-                                       class="btn btn-xs btn-warning">Edit
-                                    </a>
-                                    <a th:href="@{/poss-answers/delete (answer_id=${a.id})}"
-                                       class="btn btn-xs btn-danger">
-                                        Delete
-                                    </a>
                                 </li>
                             </ul>
                             <!--Accessible by:

@@ -50,4 +50,9 @@ public class QuestionDao {
 		String url = "http://reorconsultants.com:1337/questions/find/" + questionid;
 		return restTemplate.getForObject(url, QuestionUgh.class);
 	}
+
+	public void deleteQuestion (int question_id) {
+		String url = "http://reorconsultants.com:1337/questions/destroy/" + question_id;
+		restTemplate.getForObject(url, Void.class);
+	}
 }
