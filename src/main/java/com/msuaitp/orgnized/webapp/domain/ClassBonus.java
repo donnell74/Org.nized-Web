@@ -10,19 +10,18 @@ import java.util.Date;
 @JsonDeserialize
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ClassBonus {
-	private String email; // gone?
-	private int class_bonus_id; //id
+	private int id; //id
 	private String course_code;
 	private String semester;
 	private Date createdAt;
 	private Date updatedAt;
 
-	public int getClass_bonus_id() {
-		return class_bonus_id;
+	public int getId () {
+		return id;
 	}
 
-	public void setClass_bonus_id(int id) {
-		this.class_bonus_id = id;
+	public void setId (int id) {
+		this.id = id;
 	}
 
 	public String getCourseCode() {
@@ -39,14 +38,6 @@ public class ClassBonus {
 
 	public void setSemester(String semester) {
 		this.semester = semester;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getCourse_code() {
@@ -79,7 +70,6 @@ public class ClassBonus {
 		int result = 1;
 		result = prime * result
 				+ ((course_code == null) ? 0 : course_code.hashCode());
-		result = prime * result + class_bonus_id;
 		result = prime * result
 				+ ((semester == null) ? 0 : semester.hashCode());
 		return result;
@@ -104,9 +94,6 @@ public class ClassBonus {
 		} else if (!course_code.equals(other.course_code)) {
 			return false;
 		}
-		if (class_bonus_id != other.class_bonus_id) {
-			return false;
-		}
 		if (semester == null) {
 			if (other.semester != null) {
 				return false;
@@ -119,7 +106,7 @@ public class ClassBonus {
 
 	@Override
 	public String toString() {
-		return "ClassBonus [id=" + class_bonus_id + ", courseCode="
+		return "ClassBonus [id=" + id + ", courseCode="
 				+ course_code + ", semester=" + semester + "]";
 	}
 

@@ -67,7 +67,7 @@ public class NotesController {
 		return "note-create";
 	}
 
-	@RequestMapping("note-edit")
+	@RequestMapping(value = "edit-note")
 	public String editFormSubmission (Model model, @Valid @ModelAttribute Note note, BindingResult result) {
 		Person thePerson = new Person();
 		try {

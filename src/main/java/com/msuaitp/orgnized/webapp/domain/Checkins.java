@@ -1,17 +1,19 @@
 package com.msuaitp.orgnized.webapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.msuaitp.orgnized.webapp.controller.CheckinsController;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 @JsonSerialize
 @JsonDeserialize
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Checkins {
+	private final static Logger LOG = Logger.getLogger(CheckinsController.class.getName());
+
 	private int id;
-	private String email; // Based on person stored in DB
+	private Person email; // Based on person stored in DB
 	private Date date_scanned;
 	private Date createdAt;
 	private Date updatedAt;
@@ -24,11 +26,11 @@ public class Checkins {
 		this.id = id;
 	}
 
-	public String getEmail () {
+	public Person getEmail () {
 		return email;
 	}
 
-	public void setEmail (String email) {
+	public void setEmail (Person email) {
 		this.email = email;
 	}
 
@@ -104,4 +106,6 @@ public class Checkins {
 				+ ", date_scanned=" + date_scanned + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + '}';
 	}
+
+
 }

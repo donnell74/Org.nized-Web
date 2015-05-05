@@ -2,13 +2,11 @@ package com.msuaitp.orgnized.webapp.controller;
 
 import com.msuaitp.orgnized.webapp.dao.CheckinDao;
 import com.msuaitp.orgnized.webapp.dao.NotesDao;
-import com.msuaitp.orgnized.webapp.domain.Checkins;
+import com.msuaitp.orgnized.webapp.dao.SurveyDao;
 import com.msuaitp.orgnized.webapp.domain.Note;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,8 +16,9 @@ public class GeneralController {
 
 	CheckinDao checkinDao = new CheckinDao();
 	NotesDao notesDao = new NotesDao();
+	SurveyDao surveyDao = new SurveyDao();
 
-	@RequestMapping("/home")
+	@RequestMapping(value = {"/", "/home"})
 	public String home() {
 
 		return "home";
@@ -64,7 +63,8 @@ public class GeneralController {
 	}
 
 	@RequestMapping("/surveys")
-	public String surveys() {
+	public String surveys (Model model) {
+		model.addAttribute("surveys", surveyDao.getAllSurveys());
 
 		return "surveys";
 	}
@@ -80,14 +80,5 @@ public class GeneralController {
 	public String login() {
 
 		return "login";
-	}
-
-	@RequestMapping("/checkins-by-date")
-	@ResponseBody
-	public List<Checkins> get (
-			@RequestParam(value = "date", required = true) String date, Model model) {
-		List<Checkins> checkins = Arrays.asList(checkinDao.getCheckinsByDate(date));
-
-		return checkins;
 	}
 }

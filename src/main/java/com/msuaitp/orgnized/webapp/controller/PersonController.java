@@ -1,7 +1,6 @@
 package com.msuaitp.orgnized.webapp.controller;
 
 import com.msuaitp.orgnized.webapp.dao.PersonDao;
-import com.msuaitp.orgnized.webapp.dao.PersonWithExtrasDao;
 import com.msuaitp.orgnized.webapp.domain.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PersonController {
 
 	PersonDao personDao = new PersonDao();
-	PersonWithExtrasDao personWithExtrasDao = new PersonWithExtrasDao();
 
 	@RequestMapping("/greeting")
 	public String greeting(

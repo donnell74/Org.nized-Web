@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -87,18 +87,20 @@
             <thead>
             <tr>
                 <th>Title</th>
-                <th># of Responses</th>
+                <th>Open To Non-Members?</th>
                 <th>Close Date</th>
-                <th>View Stats</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Impeach? (Officers Only)</td>
-                <td>3</td>
-                <td>2014-12-31</td>
-                <td><a href="responses?surveyid=1">View</a></td>
-                <td></td>
+            <tr th:each="survey : ${surveys}">
+                <td th:text="${survey.name}"></td>
+                <td th:text="${survey.openToNonMembers}"></td>
+                <td th:text="${survey.end_date}"></td>
+                <td><a th:href="@{answers/view (surveyid=${survey.id})}" class="btn btn-success">View Stats</a>
+                    <a th:href="@{surveys/edit (id=${survey.id})}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{surveys/delete (id=${survey.id})}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>

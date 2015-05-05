@@ -11,7 +11,7 @@ import java.util.List;
 @JsonSerialize
 @JsonDeserialize
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Survey {
+public class SurveyUgh {
 
 	/*
 	 * id creator name start_date end_date questions roles
@@ -23,33 +23,33 @@ public class Survey {
 	private Date start_date;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date end_date;
-	private List<Question> questions;
+	private List<QuestionUgh> questions;
 	private List<Role> roles;
 	private boolean openToNonMembers;
 	private Date createdAt;
 	private Date updatedAt;
 
-	public int getId() {
+	public int getId () {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId (int id) {
 		this.id = id;
 	}
 
-	public String getCreator() {
+	public String getCreator () {
 		return creator;
 	}
 
-	public void setCreator(String creator) {
+	public void setCreator (String creator) {
 		this.creator = creator;
 	}
 
-	public String getName() {
+	public String getName () {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName (String name) {
 		this.name = name;
 	}
 
@@ -57,31 +57,31 @@ public class Survey {
 		return start_date;
 	}
 
-	public void setStart_date(Date start_date) {
+	public void setStart_date (Date start_date) {
 		this.start_date = start_date;
 	}
 
-	public Date getEnd_date() {
+	public Date getEnd_date () {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date (Date end_date) {
 		this.end_date = end_date;
 	}
 
-	public List<Question> getQuestions() {
+	public List<QuestionUgh> getQuestions () {
 		return questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
+	public void setQuestions (List<QuestionUgh> questions) {
 		this.questions = questions;
 	}
 
-	public List<Role> getRoles() {
+	public List<Role> getRoles () {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles (List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -93,24 +93,24 @@ public class Survey {
 		this.openToNonMembers = openToNonMembers;
 	}
 
-	public Date getCreatedAt() {
+	public Date getCreatedAt () {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt (Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public Date getUpdatedAt () {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt (Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode () {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
@@ -120,7 +120,7 @@ public class Survey {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals (Object obj) {
 		if (this == obj) {
 			return true;
 		}
@@ -130,7 +130,7 @@ public class Survey {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Survey other = (Survey) obj;
+		SurveyUgh other = (SurveyUgh) obj;
 		if (creator == null) {
 			if (other.creator != null) {
 				return false;
@@ -152,7 +152,7 @@ public class Survey {
 	}
 
 	@Override
-	public String toString() {
+	public String toString () {
 		return "Survey [id=" + id + ", creator=" + creator + ", name=" + name
 				+ "]";
 	}
