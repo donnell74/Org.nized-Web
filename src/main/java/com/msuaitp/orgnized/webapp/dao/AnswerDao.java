@@ -15,7 +15,7 @@ public class AnswerDao {
 	RestTemplate restTemplate = new RestTemplate();
 
 	public List<Answer> getAnswers (int question_id) {
-		String url = "http://reorconsultants.com:1337/questions/find";
+		String url = "http://reorconsultants.com:1337/answers/find";
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 		map.add("question_id", String.valueOf(question_id));
 		return Arrays.asList(restTemplate.getForEntity(url, Answer[].class).getBody());

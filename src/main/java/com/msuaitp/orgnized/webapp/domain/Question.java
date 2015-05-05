@@ -21,6 +21,7 @@ public class Question {
 	private String question_text;
 	private typeEnum type;
 	private List<PossibleAnswer> possible_answers;
+	private List<Answer> answers;
 	private List<Role> roles;
 	private Date createdAt;
 	private Date updatedAt;
@@ -87,6 +88,14 @@ public class Question {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public List<Answer> getAnswers () {
+		return answers;
+	}
+
+	public void setAnswers (List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	public enum typeEnum {

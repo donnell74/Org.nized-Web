@@ -17,7 +17,6 @@ public class Answer {
 	private Person email;
 	private Date createdAt;
 	private Date updatedAt;
-	private int count;
 
 	public int getId() {
 		return id;

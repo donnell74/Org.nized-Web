@@ -29,7 +29,7 @@
                 <li><a href="/attendance">Attendance</a></li>
                 <li><a href="/notes">Notes</a></li>
                 <li class="active"><a href="/surveys">Surveys</a></li>
-                <li><a href="/profile">My Profile</a></li>
+
                 <li><a href="/announcements">Announcements</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports
@@ -82,14 +82,19 @@
                     </div>
                     <div class="panel-body">
 
-                        <div th:each="q : ${survey.questions}">
+                        <div th:each="q : ${survey.questions}" th:with="someVariable='TEXT'">
                             <span th:text="${q.question_text}"></span>
                             <br/>
                             <ul th:each="a : ${q.possible_answers}">
                                 <li>
-                                    <span th:text="*{a.text}"></span>
+                                    <b><span th:text="*{a.text}"></span></b>: <span th:text="*{a.count}"></span>
                                 </li>
                             </ul>
+                            <div th:if="${q.type == someVariable}">
+                                <ul th:each="ans : ${q.answers}">
+                                    <li th:text="*{ans.text}"></li>
+                                </ul>
+                            </div>
                             <!--Accessible by:
                             <div th:each="r: ${q.roles}">
                                 <span th:text="${r.role_id}"></span><br />

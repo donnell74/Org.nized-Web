@@ -20,6 +20,7 @@ public class PossibleAnswer {
 	private String text;
 	private Date createdAt;
 	private Date updatedAt;
+	private int count;
 
 	public int getId() {
 		return id;
@@ -105,5 +106,13 @@ public class PossibleAnswer {
 		return "PossibleAnswer{" + "id=" + id + ", question_id=" + question_id
 				+ ", text='" + text + '\'' + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + '}';
+	}
+
+	public int getCount () {
+		return count;
+	}
+
+	public void setCount (int count) {
+		this.count = count;
 	}
 }
